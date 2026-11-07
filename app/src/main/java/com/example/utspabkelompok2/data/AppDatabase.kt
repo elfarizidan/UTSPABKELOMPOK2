@@ -20,7 +20,8 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun bookDao(): BookDao
 
     companion object {
-        private const val DATABASE_NAME = "utspab.db"
+        // Nama file database diberi suffix 037 (modul data buku).
+        private const val DATABASE_NAME_037 = "utspab_037.db"
 
         @Volatile
         private var INSTANCE: AppDatabase? = null
@@ -30,7 +31,7 @@ abstract class AppDatabase : RoomDatabase() {
                 INSTANCE ?: Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    DATABASE_NAME
+                    DATABASE_NAME_037
                 )
                     .fallbackToDestructiveMigration(dropAllTables = true)
                     .build()

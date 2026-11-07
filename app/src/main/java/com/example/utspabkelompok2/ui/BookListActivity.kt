@@ -24,70 +24,74 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 
+/**
+ * Modul 146 — Daftar buku, pencarian, RecyclerView, dan aksi hapus.
+ * Variabel milik modul ini memakai suffix 146.
+ */
 @OptIn(ExperimentalCoroutinesApi::class)
 class BookListActivity : AppCompatActivity() {
 
-    private lateinit var session: SessionManager
-    private lateinit var adapter: BookAdapter
-    private lateinit var layoutEmpty: LinearLayout
-    private lateinit var tvEmptyTitle: TextView
-    private lateinit var tvEmptyMessage: TextView
+    private lateinit var session_196: SessionManager
+    private lateinit var adapter_146: BookAdapter
+    private lateinit var layoutEmpty_146: LinearLayout
+    private lateinit var tvEmptyTitle_146: TextView
+    private lateinit var tvEmptyMessage_146: TextView
 
-    private val queryFlow = MutableStateFlow("")
+    private val queryFlow_146 = MutableStateFlow("")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        session = SessionManager(this)
-        if (!session.isLoggedIn() || session.getUserId() == SessionManager.NO_USER) {
+        session_196 = SessionManager(this)
+        if (!session_196.isLoggedIn() || session_196.getUserId() == SessionManager.NO_USER_196) {
             goToLogin()
             return
         }
 
         setContentView(R.layout.activity_book_list)
 
-        val userId = session.getUserId()
-        val bookDao = AppDatabase.getInstance(this).bookDao()
+        val userId_146 = session_196.getUserId()
+        val bookDao_146 = AppDatabase.getInstance(this).bookDao()
 
-        layoutEmpty = findViewById(R.id.layoutEmpty)
-        tvEmptyTitle = findViewById(R.id.tvEmptyTitle)
-        tvEmptyMessage = findViewById(R.id.tvEmptyMessage)
+        layoutEmpty_146 = findViewById(R.id.layoutEmpty_146)
+        tvEmptyTitle_146 = findViewById(R.id.tvEmptyTitle_146)
+        tvEmptyMessage_146 = findViewById(R.id.tvEmptyMessage_146)
 
-        adapter = BookAdapter(
+        adapter_146 = BookAdapter(
             onItemClick = { book ->
                 startActivity(BookFormActivity.newIntentForEdit(this, book.id))
             },
             onDeleteClick = { book -> confirmDelete(book) }
         )
 
-        findViewById<RecyclerView>(R.id.rvBooks).adapter = adapter
+        findViewById<RecyclerView>(R.id.rvBooks_146).adapter = adapter_146
 
-        findViewById<ExtendedFloatingActionButton>(R.id.fabAdd).setOnClickListener {
+        findViewById<ExtendedFloatingActionButton>(R.id.fabAdd_146).setOnClickListener {
             startActivity(BookFormActivity.newIntentForAdd(this))
         }
 
-        findViewById<TextInputEditText>(R.id.etSearch).addTextChangedListener(
+        findViewById<TextInputEditText>(R.id.etSearch_146).addTextChangedListener(
             object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) = Unit
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) = Unit
                 override fun afterTextChanged(s: Editable?) {
-                    queryFlow.value = s?.toString().orEmpty()
+                    queryFlow_146.value = s?.toString().orEmpty()
                 }
             }
         )
 
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                queryFlow.flatMapLatest { rawQuery ->
+                queryFlow_146.flatMapLatest { rawQuery ->
                     val query = rawQuery.trim()
                     if (query.isEmpty()) {
-                        bookDao.observeBooksByUser(userId)
+                        bookDao_146.observeBooksByUser(userId_146)
                     } else {
-                        bookDao.searchBooks(userId, query)
+                        bookDao_146.searchBooks(userId_146, query)
                     }
                 }.collect { books ->
-                    adapter.submitList(books)
-                    updateEmptyState(books.isEmpty(), queryFlow.value.trim())
+                    adapter_146.submitList(books)
+                    updateEmptyState(books.isEmpty(), queryFlow_146.value.trim())
                 }
             }
         }
@@ -95,17 +99,17 @@ class BookListActivity : AppCompatActivity() {
 
     private fun updateEmptyState(isEmpty: Boolean, query: String) {
         if (!isEmpty) {
-            layoutEmpty.visibility = LinearLayout.GONE
+            layoutEmpty_146.visibility = LinearLayout.GONE
             return
         }
 
-        layoutEmpty.visibility = LinearLayout.VISIBLE
+        layoutEmpty_146.visibility = LinearLayout.VISIBLE
         if (query.isEmpty()) {
-            tvEmptyTitle.setText(R.string.empty_books_title)
-            tvEmptyMessage.setText(R.string.empty_books_message)
+            tvEmptyTitle_146.setText(R.string.empty_books_title)
+            tvEmptyMessage_146.setText(R.string.empty_books_message)
         } else {
-            tvEmptyTitle.setText(R.string.empty_search_title)
-            tvEmptyMessage.setText(R.string.empty_search_message)
+            tvEmptyTitle_146.setText(R.string.empty_search_title)
+            tvEmptyMessage_146.setText(R.string.empty_search_message)
         }
     }
 
@@ -121,12 +125,12 @@ class BookListActivity : AppCompatActivity() {
     }
 
     private fun deleteBook(book: Book) {
-        val userId = session.getUserId()
-        val bookDao = AppDatabase.getInstance(this).bookDao()
+        val userId_146 = session_196.getUserId()
+        val bookDao_146 = AppDatabase.getInstance(this).bookDao()
         lifecycleScope.launch {
             try {
-                // Query tetap memakai user_id sehingga user tidak bisa menghapus data user lain.
-                bookDao.deleteById(userId, book.id)
+                // Query tetap memakai user_id_037 sehingga user tidak bisa menghapus data user lain.
+                bookDao_146.deleteById(userId_146, book.id)
                 Toast.makeText(this@BookListActivity, R.string.book_deleted, Toast.LENGTH_SHORT)
                     .show()
             } catch (e: Exception) {

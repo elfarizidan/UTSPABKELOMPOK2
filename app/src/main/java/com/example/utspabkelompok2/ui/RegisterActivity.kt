@@ -14,40 +14,44 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.coroutines.launch
 
+/**
+ * Modul 003 — Registrasi, keamanan password, dan logout.
+ * Variabel milik modul ini memakai suffix 003.
+ */
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var etUsername: TextInputEditText
-    private lateinit var etPassword: TextInputEditText
-    private lateinit var etPasswordConfirm: TextInputEditText
-    private lateinit var btnRegister: MaterialButton
+    private lateinit var etUsername_003: TextInputEditText
+    private lateinit var etPassword_003: TextInputEditText
+    private lateinit var etPasswordConfirm_003: TextInputEditText
+    private lateinit var btnRegister_003: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val userDao = AppDatabase.getInstance(this).userDao()
+        val userDao_003 = AppDatabase.getInstance(this).userDao()
 
-        etUsername = findViewById(R.id.etUsername)
-        etPassword = findViewById(R.id.etPassword)
-        etPasswordConfirm = findViewById(R.id.etPasswordConfirm)
-        btnRegister = findViewById(R.id.btnRegister)
+        etUsername_003 = findViewById(R.id.etUsername_003)
+        etPassword_003 = findViewById(R.id.etPassword_003)
+        etPasswordConfirm_003 = findViewById(R.id.etPasswordConfirm_003)
+        btnRegister_003 = findViewById(R.id.btnRegister_003)
 
-        btnRegister.setOnClickListener {
-            val username = etUsername.text?.toString()?.trim().orEmpty()
-            val password = etPassword.text?.toString().orEmpty()
-            val confirm = etPasswordConfirm.text?.toString().orEmpty()
+        btnRegister_003.setOnClickListener {
+            val username = etUsername_003.text?.toString()?.trim().orEmpty()
+            val password = etPassword_003.text?.toString().orEmpty()
+            val confirm = etPasswordConfirm_003.text?.toString().orEmpty()
 
             if (!validate(username, password, confirm)) return@setOnClickListener
 
             setLoading(true)
             lifecycleScope.launch {
                 try {
-                    if (userDao.countByUsername(username) > 0) {
-                        etUsername.error = getString(R.string.error_username_taken)
+                    if (userDao_003.countByUsername(username) > 0) {
+                        etUsername_003.error = getString(R.string.error_username_taken)
                         return@launch
                     }
 
-                    userDao.insert(
+                    userDao_003.insert(
                         User(
                             username = username,
                             password = PasswordUtils.hash(password)
@@ -61,7 +65,7 @@ class RegisterActivity : AppCompatActivity() {
                     ).show()
 
                     // Kembali ke halaman login dengan membawa username.
-                    val result = Intent().putExtra(EXTRA_USERNAME, username)
+                    val result = Intent().putExtra(EXTRA_USERNAME_003, username)
                     setResult(RESULT_OK, result)
                     finish()
                 } catch (e: Exception) {
@@ -76,40 +80,40 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        findViewById<TextView>(R.id.tvGoLogin).setOnClickListener { finish() }
+        findViewById<TextView>(R.id.tvGoLogin_003).setOnClickListener { finish() }
     }
 
     private fun validate(username: String, password: String, confirm: String): Boolean {
         if (username.isEmpty()) {
-            etUsername.error = getString(R.string.error_username_empty)
+            etUsername_003.error = getString(R.string.error_username_empty)
             return false
         }
         if (username.length < 3) {
-            etUsername.error = "Username minimal 3 karakter"
+            etUsername_003.error = "Username minimal 3 karakter"
             return false
         }
         if (password.isEmpty()) {
-            etPassword.error = getString(R.string.error_password_empty)
+            etPassword_003.error = getString(R.string.error_password_empty)
             return false
         }
         if (password.length < 6) {
-            etPassword.error = getString(R.string.error_password_short)
+            etPassword_003.error = getString(R.string.error_password_short)
             return false
         }
         if (password != confirm) {
-            etPasswordConfirm.error = getString(R.string.error_password_mismatch)
+            etPasswordConfirm_003.error = getString(R.string.error_password_mismatch)
             return false
         }
         return true
     }
 
     private fun setLoading(isLoading: Boolean) {
-        btnRegister.isEnabled = !isLoading
-        btnRegister.text =
+        btnRegister_003.isEnabled = !isLoading
+        btnRegister_003.text =
             if (isLoading) "Memproses..." else getString(R.string.register_button)
     }
 
     companion object {
-        const val EXTRA_USERNAME = "extra_username"
+        const val EXTRA_USERNAME_003 = "extra_username_003"
     }
 }

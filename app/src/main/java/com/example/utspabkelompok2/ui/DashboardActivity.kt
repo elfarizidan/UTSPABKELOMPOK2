@@ -12,47 +12,51 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.example.utspabkelompok2.R
 import com.example.utspabkelompok2.data.AppDatabase
 import com.example.utspabkelompok2.util.SessionManager
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
 import kotlinx.coroutines.launch
 
+/**
+ * Modul 030 — Dashboard & statistik jumlah buku (dengan logout modul 003).
+ * Variabel milik modul ini memakai suffix 030.
+ */
 class DashboardActivity : AppCompatActivity() {
 
-    private lateinit var session: SessionManager
+    private lateinit var session_196: SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        session = SessionManager(this)
-        if (!session.isLoggedIn() || session.getUserId() == SessionManager.NO_USER) {
+        session_196 = SessionManager(this)
+        if (!session_196.isLoggedIn() || session_196.getUserId() == SessionManager.NO_USER_196) {
             goToLogin()
             return
         }
 
         setContentView(R.layout.activity_dashboard)
 
-        val userId = session.getUserId()
+        val userId_030 = session_196.getUserId()
 
-        findViewById<TextView>(R.id.tvGreeting).text =
-            getString(R.string.dashboard_greeting, session.getUsername())
+        findViewById<TextView>(R.id.tvGreeting_030).text =
+            getString(R.string.dashboard_greeting, session_196.getUsername())
 
-        findViewById<MaterialCardView>(R.id.cardMyBooks).setOnClickListener {
+        findViewById<MaterialCardView>(R.id.cardMyBooks_030).setOnClickListener {
             startActivity(Intent(this, BookListActivity::class.java))
         }
 
-        findViewById<MaterialCardView>(R.id.cardAddBook).setOnClickListener {
+        findViewById<MaterialCardView>(R.id.cardAddBook_030).setOnClickListener {
             startActivity(BookFormActivity.newIntentForAdd(this))
         }
 
-        findViewById<MaterialButton>(R.id.btnLogout).setOnClickListener {
-            confirmLogout()
+        findViewById<MaterialButton>(R.id.btnLogout_003).setOnClickListener {
+            confirmLogout_003()
         }
 
-        val bookDao = AppDatabase.getInstance(this).bookDao()
+        val bookDao_030 = AppDatabase.getInstance(this).bookDao()
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                bookDao.observeBookCount(userId).collect { count ->
-                    findViewById<TextView>(R.id.tvBookCount).text = count.toString()
+                bookDao_030.observeBookCount(userId_030).collect { count ->
+                    findViewById<TextView>(R.id.tvBookCount_030).text = count.toString()
                 }
             }
         }
@@ -60,18 +64,18 @@ class DashboardActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        if (!session.isLoggedIn()) {
+        if (!session_196.isLoggedIn()) {
             goToLogin()
         }
     }
 
-    private fun confirmLogout() {
+    private fun confirmLogout_003() {
         AlertDialog.Builder(this)
             .setTitle(R.string.logout_confirm_title)
             .setMessage(R.string.logout_confirm_message)
             .setNegativeButton(R.string.cancel, null)
             .setPositiveButton(R.string.logout) { _, _ ->
-                session.logout()
+                session_196.logout()
                 Toast.makeText(this, "Berhasil keluar", Toast.LENGTH_SHORT).show()
                 goToLogin()
             }

@@ -10,6 +10,10 @@ import com.example.utspabkelompok2.R
 import com.example.utspabkelompok2.data.entity.Book
 import com.google.android.material.button.MaterialButton
 
+/**
+ * Modul 146 — Adapter RecyclerView daftar buku.
+ * Variabel milik modul ini memakai suffix 146.
+ */
 class BookAdapter(
     private val onItemClick: (Book) -> Unit,
     private val onDeleteClick: (Book) -> Unit
@@ -27,19 +31,19 @@ class BookAdapter(
 
     inner class BookViewHolder(itemView: android.view.View) : RecyclerView.ViewHolder(itemView) {
 
-        private val tvJudul: TextView = itemView.findViewById(R.id.tvJudul)
-        private val tvPengarang: TextView = itemView.findViewById(R.id.tvPengarang)
-        private val tvTahun: TextView = itemView.findViewById(R.id.tvTahun)
-        private val btnDelete: MaterialButton = itemView.findViewById(R.id.btnDelete)
+        private val tvJudul_146: TextView = itemView.findViewById(R.id.tvJudul_146)
+        private val tvPengarang_146: TextView = itemView.findViewById(R.id.tvPengarang_146)
+        private val tvTahun_146: TextView = itemView.findViewById(R.id.tvTahun_146)
+        private val btnDelete_146: MaterialButton = itemView.findViewById(R.id.btnDelete_146)
 
         fun bind(book: Book) {
             val context = itemView.context
-            tvJudul.text = book.judul
-            tvPengarang.text = context.getString(R.string.book_by, book.pengarang)
-            tvTahun.text = context.getString(R.string.book_year, book.tahun)
+            tvJudul_146.text = book.judul
+            tvPengarang_146.text = context.getString(R.string.book_by, book.pengarang)
+            tvTahun_146.text = context.getString(R.string.book_year, book.tahun)
 
             itemView.setOnClickListener { onItemClick(book) }
-            btnDelete.setOnClickListener { onDeleteClick(book) }
+            btnDelete_146.setOnClickListener { onDeleteClick(book) }
         }
     }
 

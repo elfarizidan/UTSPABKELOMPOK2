@@ -24,31 +24,34 @@ Saat aplikasi dibuka, `LoginActivity` mengecek sesi di SharedPreferences. Jika m
 
 ## Struktur database
 
-```
-users
-- id (INTEGER, PK autoGenerate)
-- username (TEXT, unique index)
-- password (TEXT, SHA-256)
+Nama tabel dan kolom diberi suffix 3 digit NIM sebagai penanda kontribusi
+(detail lengkap: `PEMBAGIAN_TUGAS.md`).
 
-books
-- id (INTEGER, PK autoGenerate)
-- user_id (INTEGER, FK -> users.id, ON DELETE CASCADE, index)
-- judul (TEXT)
-- pengarang (TEXT)
-- tahun (INTEGER)
+```
+users_003
+- id_003 (INTEGER, PK autoGenerate)
+- username_003 (TEXT, unique index)
+- password_003 (TEXT, SHA-256)
+
+books_037
+- id_037 (INTEGER, PK autoGenerate)
+- user_id_037 (INTEGER, FK -> users_003.id_003, ON DELETE CASCADE, index)
+- judul_037 (TEXT)
+- pengarang_037 (TEXT)
+- tahun_037 (INTEGER)
 ```
 
 Entity & DAO: `app/src/main/java/com/example/utspabkelompok2/data/`.
-Database dibuat lewat `AppDatabase` (Room) dengan nama `utspab.db`.
+Database dibuat lewat `AppDatabase` (Room) dengan nama `utspab_037.db`.
 
 Query pencarian:
 
 ```sql
-SELECT * FROM books
-WHERE user_id = :userId
-  AND (pengarang LIKE '%' || :query || '%'
-       OR CAST(tahun AS TEXT) LIKE '%' || :query || '%')
-ORDER BY judul COLLATE NOCASE ASC
+SELECT * FROM books_037
+WHERE user_id_037 = :userId
+  AND (pengarang_037 LIKE '%' || :query || '%'
+       OR CAST(tahun_037 AS TEXT) LIKE '%' || :query || '%')
+ORDER BY judul_037 COLLATE NOCASE ASC
 ```
 
 ## Struktur project
@@ -98,5 +101,6 @@ APK hasil build: `app/build/outputs/apk/debug/app-debug.apk`.
 ## Catatan
 
 - KSP digunakan untuk kompilasi Room (`androidx.room:room-compiler`).
+- Penanda NIM pada tabel/kolom/variabel dijelaskan di `PEMBAGIAN_TUGAS.md`.
 - `fallbackToDestructiveMigration` dipakai agar perubahan skema saat pengembangan tidak membuat aplikasi crash; data akan direset ketika versi database naik.
 - Tidak ada permission internet, seluruh data disimpan lokal di SQLite.

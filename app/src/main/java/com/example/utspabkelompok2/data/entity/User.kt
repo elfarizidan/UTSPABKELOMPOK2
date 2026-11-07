@@ -6,21 +6,24 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 /**
- * Tabel user untuk autentikasi.
+ * Tabel user untuk autentikasi (modul 003).
  * Password disimpan dalam bentuk hash SHA-256 (lihat PasswordUtils).
+ *
+ * Nama tabel & kolom diberi suffix 003 sebagai penanda kontribusi anggota
+ * dengan NIM ...003.
  */
 @Entity(
-    tableName = "users",
-    indices = [Index(value = ["username"], unique = true)]
+    tableName = "users_003",
+    indices = [Index(value = ["username_003"], unique = true)]
 )
 data class User(
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "id_003")
     val id: Long = 0,
 
-    @ColumnInfo(name = "username")
+    @ColumnInfo(name = "username_003")
     val username: String,
 
-    @ColumnInfo(name = "password")
+    @ColumnInfo(name = "password_003")
     val password: String
 )

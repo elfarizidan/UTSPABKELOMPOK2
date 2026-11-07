@@ -2,27 +2,27 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "20c4827998271066e959f2f977a379ef",
+    "identityHash": "c5ce9fc69a629743aacda5f27a576f47",
     "entities": [
       {
-        "tableName": "users",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `username` TEXT NOT NULL, `password` TEXT NOT NULL)",
+        "tableName": "users_003",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_003` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `username_003` TEXT NOT NULL, `password_003` TEXT NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
-            "columnName": "id",
+            "columnName": "id_003",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
             "fieldPath": "username",
-            "columnName": "username",
+            "columnName": "username_003",
             "affinity": "TEXT",
             "notNull": true
           },
           {
             "fieldPath": "password",
-            "columnName": "password",
+            "columnName": "password_003",
             "affinity": "TEXT",
             "notNull": true
           }
@@ -30,52 +30,52 @@
         "primaryKey": {
           "autoGenerate": true,
           "columnNames": [
-            "id"
+            "id_003"
           ]
         },
         "indices": [
           {
-            "name": "index_users_username",
+            "name": "index_users_003_username_003",
             "unique": true,
             "columnNames": [
-              "username"
+              "username_003"
             ],
             "orders": [],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_users_username` ON `${TABLE_NAME}` (`username`)"
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_users_003_username_003` ON `${TABLE_NAME}` (`username_003`)"
           }
         ]
       },
       {
-        "tableName": "books",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `user_id` INTEGER NOT NULL, `judul` TEXT NOT NULL, `pengarang` TEXT NOT NULL, `tahun` INTEGER NOT NULL, FOREIGN KEY(`user_id`) REFERENCES `users`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "tableName": "books_037",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id_037` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `user_id_037` INTEGER NOT NULL, `judul_037` TEXT NOT NULL, `pengarang_037` TEXT NOT NULL, `tahun_037` INTEGER NOT NULL, FOREIGN KEY(`user_id_037`) REFERENCES `users_003`(`id_003`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
-            "columnName": "id",
+            "columnName": "id_037",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
             "fieldPath": "userId",
-            "columnName": "user_id",
+            "columnName": "user_id_037",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
             "fieldPath": "judul",
-            "columnName": "judul",
+            "columnName": "judul_037",
             "affinity": "TEXT",
             "notNull": true
           },
           {
             "fieldPath": "pengarang",
-            "columnName": "pengarang",
+            "columnName": "pengarang_037",
             "affinity": "TEXT",
             "notNull": true
           },
           {
             "fieldPath": "tahun",
-            "columnName": "tahun",
+            "columnName": "tahun_037",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -83,30 +83,30 @@
         "primaryKey": {
           "autoGenerate": true,
           "columnNames": [
-            "id"
+            "id_037"
           ]
         },
         "indices": [
           {
-            "name": "index_books_user_id",
+            "name": "index_books_037_user_id_037",
             "unique": false,
             "columnNames": [
-              "user_id"
+              "user_id_037"
             ],
             "orders": [],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_books_user_id` ON `${TABLE_NAME}` (`user_id`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_books_037_user_id_037` ON `${TABLE_NAME}` (`user_id_037`)"
           }
         ],
         "foreignKeys": [
           {
-            "table": "users",
+            "table": "users_003",
             "onDelete": "CASCADE",
             "onUpdate": "NO ACTION",
             "columns": [
-              "user_id"
+              "user_id_037"
             ],
             "referencedColumns": [
-              "id"
+              "id_003"
             ]
           }
         ]
@@ -114,7 +114,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '20c4827998271066e959f2f977a379ef')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c5ce9fc69a629743aacda5f27a576f47')"
     ]
   }
 }
