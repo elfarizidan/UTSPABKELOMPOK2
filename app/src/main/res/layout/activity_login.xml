@@ -16,19 +16,6 @@
         android:paddingTop="48dp"
         android:paddingBottom="32dp">
 
-        <FrameLayout
-            android:layout_width="88dp"
-            android:layout_height="88dp"
-            android:background="@drawable/bg_circle_primary">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="ðŸ“š"
-                android:textSize="42sp" />
-        </FrameLayout>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
