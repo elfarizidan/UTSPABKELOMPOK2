@@ -1,0 +1,80 @@
+<resources>
+    <string name="app_name">Perpustakaan Pribadi</string>
+
+    <!-- Umum -->
+    <string name="app_tagline">Kelola koleksi buku pribadimu</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="password_confirm">Konfirmasi Password</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="logout">Keluar</string>
+    <string name="save">Simpan</string>
+    <string name="cancel">Batal</string>
+    <string name="delete">Hapus</string>
+    <string name="back">Kembali</string>
+
+    <!-- Login -->
+    <string name="login_title">Selamat Datang</string>
+    <string name="login_subtitle">Masuk untuk melanjutkan ke koleksi bukumu</string>
+    <string name="login_button">Masuk</string>
+    <string name="login_no_account">Belum punya akun?</string>
+    <string name="login_register_link">Daftar di sini</string>
+    <string name="error_username_empty">Username tidak boleh kosong</string>
+    <string name="error_password_empty">Password tidak boleh kosong</string>
+    <string name="error_password_short">Password minimal 6 karakter</string>
+    <string name="error_password_mismatch">Konfirmasi password tidak sama</string>
+    <string name="error_login">Username atau password salah</string>
+    <string name="error_username_taken">Username sudah terdaftar</string>
+    <string name="error_unknown">Terjadi kesalahan, silakan coba lagi</string>
+    <string name="login_success">Berhasil masuk</string>
+
+    <!-- Register -->
+    <string name="register_title">Buat Akun</string>
+    <string name="register_subtitle">Daftar agar koleksi bukumu tersimpan aman</string>
+    <string name="register_button">Daftar Sekarang</string>
+    <string name="register_have_account">Sudah punya akun?</string>
+    <string name="register_login_link">Masuk di sini</string>
+    <string name="register_success">Akun berhasil dibuat. Silakan masuk.</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_greeting">Halo, %1$s!</string>
+    <string name="dashboard_subtitle">Senang melihatmu kembali. Kelola koleksi bukumu di bawah ini.</string>
+    <string name="dashboard_total_books">Total Buku</string>
+    <string name="dashboard_total_books_hint">buku tersimpan</string>
+    <string name="dashboard_my_books">Daftar Buku</string>
+    <string name="dashboard_my_books_desc">Lihat, cari, edit, dan hapus koleksimu</string>
+    <string name="dashboard_add_book">Tambah Buku</string>
+    <string name="dashboard_add_book_desc">Catat buku baru ke koleksi pribadimu</string>
+    <string name="logout_confirm_title">Keluar Akun</string>
+    <string name="logout_confirm_message">Yakin ingin keluar dari akun ini?</string>
+
+    <!-- Daftar Buku -->
+    <string name="book_list_title">Daftar Buku</string>
+    <string name="search_hint">Cari berdasarkan pengarang atau tahun</string>
+    <string name="empty_books_title">Belum ada buku</string>
+    <string name="empty_books_message">Tekan tombol + untuk menambahkan buku pertamamu.</string>
+    <string name="empty_search_title">Buku tidak ditemukan</string>
+    <string name="empty_search_message">Coba kata kunci pengarang atau tahun lain.</string>
+    <string name="add_book">Tambah Buku</string>
+    <string name="book_by">oleh %1$s</string>
+    <string name="book_year">Tahun %1$d</string>
+    <string name="book_edit_hint">Ketuk kartu untuk mengedit</string>
+
+    <!-- Form Buku -->
+    <string name="form_add_title">Tambah Buku</string>
+    <string name="form_edit_title">Edit Buku</string>
+    <string name="judul">Judul Buku</string>
+    <string name="pengarang">Pengarang</string>
+    <string name="tahun">Tahun Terbit</string>
+    <string name="error_judul_empty">Judul tidak boleh kosong</string>
+    <string name="error_pengarang_empty">Pengarang tidak boleh kosong</string>
+    <string name="error_tahun_invalid">Tahun harus berupa angka 4 digit (contoh: 2020)</string>
+    <string name="book_saved">Buku berhasil disimpan</string>
+    <string name="book_updated">Buku berhasil diperbarui</string>
+    <string name="book_not_found">Buku tidak ditemukan</string>
+    <string name="delete_confirm_title">Hapus Buku</string>
+    <string name="delete_confirm_message">Hapus \"%1$s\" dari koleksimu? Tindakan ini tidak bisa dibatalkan.</string>
+    <string name="book_deleted">Buku berhasil dihapus</string>
+</resources>
