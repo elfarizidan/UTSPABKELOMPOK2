@@ -28,19 +28,6 @@
                 android:orientation="horizontal"
                 android:padding="20dp">
 
-                <FrameLayout
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
-                    android:background="@drawable/bg_circle_white">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="ðŸ“–"
-                        android:textSize="26sp" />
-                </FrameLayout>
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -140,19 +127,6 @@
                 android:orientation="horizontal"
                 android:padding="18dp">
 
-                <FrameLayout
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/bg_circle_soft">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="ðŸ“š"
-                        android:textSize="22sp" />
-                </FrameLayout>
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -177,12 +151,6 @@
                         android:textSize="13sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="â€º"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="28sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -206,19 +174,6 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="18dp">
-
-                <FrameLayout
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:background="@drawable/bg_circle_soft">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="âž•"
-                        android:textSize="22sp" />
-                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -244,12 +199,6 @@
                         android:textSize="13sp" />
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="â€º"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="28sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
