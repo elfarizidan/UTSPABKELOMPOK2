@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -41,7 +41,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/tvJudul_146"
+                android:id="@+id/tvJudul_196"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
@@ -52,7 +52,7 @@
                 tools:text="Bumi Manusia" />
 
             <TextView
-                android:id="@+id/tvPengarang_146"
+                android:id="@+id/tvPengarang_196"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -63,7 +63,7 @@
                 tools:text="oleh Pramoedya Ananta Toer" />
 
             <TextView
-                android:id="@+id/tvTahun_146"
+                android:id="@+id/tvTahun_196"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -79,7 +79,7 @@
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDelete_146"
+            android:id="@+id/btnDelete_196"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

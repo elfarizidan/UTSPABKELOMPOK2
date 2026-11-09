@@ -27,13 +27,13 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var etPassword_196: TextInputEditText
     private lateinit var btnLogin_196: MaterialButton
     private lateinit var session_196: SessionManager
-    private lateinit var userDao_003: UserDao
+    private lateinit var userDao_196: UserDao
 
     private val registerLauncher_196 = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == RESULT_OK) {
-            val username = result.data?.getStringExtra(RegisterActivity.EXTRA_USERNAME_003)
+            val username = result.data?.getStringExtra(RegisterActivity.EXTRA_USERNAME_196)
             if (!username.isNullOrBlank()) {
                 etUsername_196.setText(username)
                 etPassword_196.requestFocus()
@@ -52,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_login)
 
-        userDao_003 = AppDatabase.getInstance(this).userDao()
+        userDao_196 = AppDatabase.getInstance(this).userDao()
 
         etUsername_196 = findViewById(R.id.etUsername_196)
         etPassword_196 = findViewById(R.id.etPassword_196)
@@ -81,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
         setLoading(true)
         lifecycleScope.launch {
             try {
-                val user: User? = userDao_003.findByUsername(username)
+                val user: User? = userDao_196.findByUsername(username)
                 if (user == null || !PasswordUtils.verify(password, user.password)) {
                     Toast.makeText(
                         this@LoginActivity,

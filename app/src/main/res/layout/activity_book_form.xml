@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                     app:boxCornerRadiusTopStart="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etJudul_019"
+                        android:id="@+id/etJudul_196"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textCapSentences"
@@ -56,7 +56,7 @@
                     app:boxCornerRadiusTopStart="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etPengarang_019"
+                        android:id="@+id/etPengarang_196"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
@@ -75,7 +75,7 @@
                     app:boxCornerRadiusTopStart="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etTahun_019"
+                        android:id="@+id/etTahun_196"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
@@ -86,7 +86,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSave_019"
+            android:id="@+id/btnSave_196"
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:layout_marginTop="24dp"
@@ -96,7 +96,7 @@
             app:cornerRadius="14dp" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCancel_019"
+            android:id="@+id/btnCancel_196"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="52dp"

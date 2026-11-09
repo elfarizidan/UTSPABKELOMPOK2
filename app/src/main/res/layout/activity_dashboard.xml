@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -49,7 +49,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tvGreeting_030"
+                        android:id="@+id/tvGreeting_196"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/white"
@@ -108,7 +108,7 @@
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/tvBookCount_030"
+                    android:id="@+id/tvBookCount_196"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
@@ -121,7 +121,7 @@
 
         <!-- Menu daftar buku -->
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardMyBooks_030"
+            android:id="@+id/cardMyBooks_196"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -188,7 +188,7 @@
 
         <!-- Menu tambah buku -->
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardAddBook_030"
+            android:id="@+id/cardAddBook_196"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -254,7 +254,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogout_003"
+            android:id="@+id/btnLogout_196"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="52dp"

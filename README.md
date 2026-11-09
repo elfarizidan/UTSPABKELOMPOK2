@@ -24,34 +24,34 @@ Saat aplikasi dibuka, `LoginActivity` mengecek sesi di SharedPreferences. Jika m
 
 ## Struktur database
 
-Nama tabel dan kolom diberi suffix 3 digit NIM sebagai penanda kontribusi
-(detail lengkap: `PEMBAGIAN_TUGAS.md`).
+Nama tabel dan kolom diberi suffix **196** (NIM 102042300196) sebagai penanda
+kepemilikan (detail lengkap: `PEMBAGIAN_TUGAS.md`).
 
 ```
-users_003
-- id_003 (INTEGER, PK autoGenerate)
-- username_003 (TEXT, unique index)
-- password_003 (TEXT, SHA-256)
+users_196
+- id_196 (INTEGER, PK autoGenerate)
+- username_196 (TEXT, unique index)
+- password_196 (TEXT, SHA-256)
 
-books_037
-- id_037 (INTEGER, PK autoGenerate)
-- user_id_037 (INTEGER, FK -> users_003.id_003, ON DELETE CASCADE, index)
-- judul_037 (TEXT)
-- pengarang_037 (TEXT)
-- tahun_037 (INTEGER)
+books_196
+- id_196 (INTEGER, PK autoGenerate)
+- user_id_196 (INTEGER, FK -> users_196.id_196, ON DELETE CASCADE, index)
+- judul_196 (TEXT)
+- pengarang_196 (TEXT)
+- tahun_196 (INTEGER)
 ```
 
 Entity & DAO: `app/src/main/java/com/example/utspabkelompok2/data/`.
-Database dibuat lewat `AppDatabase` (Room) dengan nama `utspab_037.db`.
+Database dibuat lewat `AppDatabase` (Room) dengan nama `utspab_196.db`.
 
 Query pencarian:
 
 ```sql
-SELECT * FROM books_037
-WHERE user_id_037 = :userId
-  AND (pengarang_037 LIKE '%' || :query || '%'
-       OR CAST(tahun_037 AS TEXT) LIKE '%' || :query || '%')
-ORDER BY judul_037 COLLATE NOCASE ASC
+SELECT * FROM books_196
+WHERE user_id_196 = :userId
+  AND (pengarang_196 LIKE '%' || :query || '%'
+       OR CAST(tahun_196 AS TEXT) LIKE '%' || :query || '%')
+ORDER BY judul_196 COLLATE NOCASE ASC
 ```
 
 ## Struktur project

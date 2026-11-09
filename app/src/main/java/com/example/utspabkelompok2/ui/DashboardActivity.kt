@@ -17,8 +17,8 @@ import com.google.android.material.card.MaterialCardView
 import kotlinx.coroutines.launch
 
 /**
- * Modul 030 — Dashboard & statistik jumlah buku (dengan logout modul 003).
- * Variabel milik modul ini memakai suffix 030.
+ * modul 196 — Dashboard & statistik jumlah buku (dengan logout modul 196).
+ * Variabel milik modul ini memakai suffix 196.
  */
 class DashboardActivity : AppCompatActivity() {
 
@@ -35,28 +35,28 @@ class DashboardActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_dashboard)
 
-        val userId_030 = session_196.getUserId()
+        val userId_196 = session_196.getUserId()
 
-        findViewById<TextView>(R.id.tvGreeting_030).text =
+        findViewById<TextView>(R.id.tvGreeting_196).text =
             getString(R.string.dashboard_greeting, session_196.getUsername())
 
-        findViewById<MaterialCardView>(R.id.cardMyBooks_030).setOnClickListener {
+        findViewById<MaterialCardView>(R.id.cardMyBooks_196).setOnClickListener {
             startActivity(Intent(this, BookListActivity::class.java))
         }
 
-        findViewById<MaterialCardView>(R.id.cardAddBook_030).setOnClickListener {
+        findViewById<MaterialCardView>(R.id.cardAddBook_196).setOnClickListener {
             startActivity(BookFormActivity.newIntentForAdd(this))
         }
 
-        findViewById<MaterialButton>(R.id.btnLogout_003).setOnClickListener {
-            confirmLogout_003()
+        findViewById<MaterialButton>(R.id.btnLogout_196).setOnClickListener {
+            confirmLogout_196()
         }
 
-        val bookDao_030 = AppDatabase.getInstance(this).bookDao()
+        val bookDao_196 = AppDatabase.getInstance(this).bookDao()
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                bookDao_030.observeBookCount(userId_030).collect { count ->
-                    findViewById<TextView>(R.id.tvBookCount_030).text = count.toString()
+                bookDao_196.observeBookCount(userId_196).collect { count ->
+                    findViewById<TextView>(R.id.tvBookCount_196).text = count.toString()
                 }
             }
         }
@@ -69,7 +69,7 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
-    private fun confirmLogout_003() {
+    private fun confirmLogout_196() {
         AlertDialog.Builder(this)
             .setTitle(R.string.logout_confirm_title)
             .setMessage(R.string.logout_confirm_message)

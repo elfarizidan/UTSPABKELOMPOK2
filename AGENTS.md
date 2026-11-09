@@ -16,7 +16,7 @@ Semua data lokal (offline), tanpa API/internet.
 
 Dokumen pendukung:
 - `README.md` — dokumentasi fitur & cara menjalankan untuk manusia.
-- `PEMBAGIAN_TUGAS.md` — pembagian tugas 6 anggota + peta suffix NIM.
+- `PEMBAGIAN_TUGAS.md` — peta suffix NIM pada seluruh penanda project.
 
 ## 2. Stack & versi
 
@@ -62,11 +62,11 @@ app/src/main/java/com/example/utspabkelompok2/
 ├── data/
 │   ├── AppDatabase.kt          # Room database, singleton, nama DB
 │   ├── dao/
-│   │   ├── UserDao.kt          # query users_003
-│   │   └── BookDao.kt          # query books_037 + isolasi user_id_037
+│   │   ├── UserDao.kt          # query users_196
+│   │   └── BookDao.kt          # query books_196 + isolasi user_id_196
 │   └── entity/
-│       ├── User.kt             # tabel users_003
-│       └── Book.kt             # tabel books_037 + FK
+│       ├── User.kt             # tabel users_196
+│       └── Book.kt             # tabel books_196 + FK
 ├── ui/
 │   ├── LoginActivity.kt        # login + cek sesi
 │   ├── RegisterActivity.kt     # register + validasi
@@ -111,25 +111,25 @@ Manifest: `app/src/main/AndroidManifest.xml` (launcher = `LoginActivity`).
 
 ## 6. Database (Room)
 
-Nama file: **`utspab_037.db`** (`DATABASE_NAME_037`), versi **1**,
+Nama file: **`utspab_196.db`** (`DATABASE_NAME_196`), versi **1**,
 `exportSchema = true`, `fallbackToDestructiveMigration(dropAllTables = true)`.
 
 ```sql
-users_003(
-  id_003 INTEGER PK AUTOINCREMENT,
-  username_003 TEXT NOT NULL UNIQUE,
-  password_003 TEXT NOT NULL
+users_196(
+  id_196 INTEGER PK AUTOINCREMENT,
+  username_196 TEXT NOT NULL UNIQUE,
+  password_196 TEXT NOT NULL
 )
 
-books_037(
-  id_037 INTEGER PK AUTOINCREMENT,
-  user_id_037 INTEGER NOT NULL,
-  judul_037 TEXT NOT NULL,
-  pengarang_037 TEXT NOT NULL,
-  tahun_037 INTEGER NOT NULL,
-  FOREIGN KEY(user_id_037) REFERENCES users_003(id_003) ON DELETE CASCADE
+books_196(
+  id_196 INTEGER PK AUTOINCREMENT,
+  user_id_196 INTEGER NOT NULL,
+  judul_196 TEXT NOT NULL,
+  pengarang_196 TEXT NOT NULL,
+  tahun_196 INTEGER NOT NULL,
+  FOREIGN KEY(user_id_196) REFERENCES users_196(id_196) ON DELETE CASCADE
 )
-INDEX index_books_037_user_id_037 ON books_037(user_id_037)
+INDEX index_books_196_user_id_196 ON books_196(user_id_196)
 ```
 
 Kotlin property tetap memakai nama bersih (`id`, `userId`, `judul`, ...);
@@ -137,7 +137,7 @@ nama tabel/kolom fisik diatur lewat `@Entity(tableName=...)` dan
 `@ColumnInfo(name=...)`.
 
 **Aturan isolasi data (wajib dipertahankan):**
-- Semua query baca/tulis/hapus buku harus memfilter `user_id_037`.
+- Semua query baca/tulis/hapus buku harus memfilter `user_id_196`.
 - `BookDao.findById` dan `deleteById` menerima `userId` + `bookId`.
 - Update buku di `BookFormActivity` memakai objek hasil `findById(userId, id)`
   agar user tidak bisa mengubah buku user lain.
@@ -163,7 +163,7 @@ Login ──► Dashboard ──► Daftar Buku ──► Form Tambah
 
 - `LoginActivity` adalah launcher. Di `onCreate`, jika `SessionManager`
   menunjukkan sudah login, langsung ke `DashboardActivity`.
-- Register sukses → kembali ke login membawa `EXTRA_USERNAME_003` (prefill).
+- Register sukses → kembali ke login membawa `EXTRA_USERNAME_196` (prefill).
 - Logout: dialog konfirmasi → `SessionManager.logout()` → hapus task stack →
   `LoginActivity`.
 - Setiap Activity memvalidasi sesi di awal (`isLoggedIn()` dan
@@ -173,32 +173,27 @@ Login ──► Dashboard ──► Daftar Buku ──► Form Tambah
 
 ## 8. Konvensi suffix NIM (penting!)
 
-Setiap kontribusi anggota ditandai 3 digit terakhir NIM. **Jangan menghapus
-atau mengganti suffix ini** saat refactor; itu bagian dari bukti pembagian
-tugas.
+Seluruh penanda project menggunakan **satu NIM: 102042300196** dengan suffix
+`196`. **Jangan menghapus atau mengganti suffix ini** saat refactor; itu bagian
+dari bukti kepemilikan tugas.
 
-| Suffix | NIM | Domain |
+| Suffix | NIM | Cakupan |
 |---|---|---|
-| `196` | 102042300196 | Login, `SessionManager`, SharedPreferences |
-| `003` | 102042300003 | Register, `User`/`UserDao`, password, logout |
-| `037` | 102042300037 | `Book`/`BookDao`, `AppDatabase`, nama file DB |
-| `030` | 102042300030 | Dashboard, statistik jumlah buku |
-| `146` | 102042300146 | Daftar buku, pencarian, RecyclerView, hapus |
-| `019` | 102042300019 | Form tambah/edit, validasi input |
+| `196` | 102042300196 | Seluruh tabel, kolom, SharedPreferences, ID view XML, dan field/konstanta Kotlin milik project |
 
 Detail lengkap ada di `PEMBAGIAN_TUGAS.md`.
 
 Aturan penamaan:
-- Suffix berada di **akhir** identifier: `session_196`, `book_id_037`,
-  `etJudul_019`, `tvBookCount_030`.
+- Suffix berada di **akhir** identifier: `session_196`, `book_id_196`,
+  `etJudul_196`, `tvBookCount_196`.
 - Suffix diterapkan pada identitas buatan sendiri: tabel, kolom, nama/key
-  SharedPreferences, ID view XML, field/konstanta Kotlin milik modul.
+  SharedPreferences, ID view XML, field/konstanta Kotlin.
 - **Jangan** memberi suffix pada nama framework/API (`onCreate`, `Intent`,
   `R`, `Flow`, `RecyclerView`, dsb.) atau nama class inti
   (`LoginActivity`, `BookDao`, dst.).
-- Menambah ID view baru: gunakan suffix modul pemilik fitur, dan pastikan unik
-  secara global (ID resource Android bersifat global).
-- Menambah field/variabel baru di modul tertentu: gunakan suffix modul itu.
+- Menambah ID view baru: gunakan suffix `196`, dan pastikan unik secara global
+  (ID resource Android bersifat global).
+- Menambah field/variabel baru: gunakan suffix `196`.
 
 ## 9. Detail perilaku UI
 
@@ -208,7 +203,7 @@ Aturan penamaan:
   - Ketuk kartu → edit; tombol Hapus → dialog konfirmasi.
   - FAB → form tambah.
 - `BookFormActivity`:
-  - Mode ditentukan `EXTRA_BOOK_ID_019` (> 0 = edit).
+  - Mode ditentukan `EXTRA_BOOK_ID_196` (> 0 = edit).
   - Validasi: judul wajib, pengarang wajib, tahun wajib 4 digit (1000–2100).
   - Tombol simpan dinonaktifkan saat proses simpan (teks "Menyimpan...").
 - `DashboardActivity`:
@@ -232,9 +227,9 @@ Aturan penamaan:
 ## 11. Lokasi data saat runtime
 
 ```
-/data/data/com.example.utspabkelompok2/databases/utspab_037.db
-/data/data/com.example.utspabkelompok2/databases/utspab_037.db-wal
-/data/data/com.example.utspabkelompok2/databases/utspab_037.db-shm
+/data/data/com.example.utspabkelompok2/databases/utspab_196.db
+/data/data/com.example.utspabkelompok2/databases/utspab_196.db-wal
+/data/data/com.example.utspabkelompok2/databases/utspab_196.db-shm
 ```
 
 SharedPreferences:
@@ -246,7 +241,7 @@ Akses debug:
 ```powershell
 $adb = "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe"
 & $adb shell run-as com.example.utspabkelompok2 ls databases
-& $adb exec-out run-as com.example.utspabkelompok2 cat databases/utspab_037.db > utspab_037.db
+& $adb exec-out run-as com.example.utspabkelompok2 cat databases/utspab_196.db > utspab_196.db
 ```
 
 Atau gunakan **App Inspection → Database Inspector** di Android Studio.
@@ -254,7 +249,7 @@ Atau gunakan **App Inspection → Database Inspector** di Android Studio.
 ## 12. Yang harus dihindari
 
 - Jangan menambahkan permission internet/API jaringan — project sengaja offline.
-- Jangan menghapus filter `user_id_037` dari query apa pun.
+- Jangan menghapus filter `user_id_196` dari query apa pun.
 - Jangan menyimpan password plaintext.
 - Jangan mengedit `app/build/` atau `app/schemas/` secara manual.
 - Jangan memakai `fallbackToDestructiveMigration` sebagai alasan untuk
